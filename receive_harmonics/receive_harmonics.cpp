@@ -12,11 +12,13 @@ float root_freq = 110.0;
 
 static void AudioCallback(AudioHandle::InterleavingInputBuffer in,
                           AudioHandle::InterleavingOutputBuffer out,
-                          size_t size) {
+                          size_t size)
+{
   float sig, freq, amp;
   // size_t wave = 1;
 
-  for (size_t i = 0; i < size; i++) {
+  for (size_t i = 0; i < size; i++)
+  {
     // Read Knobs
     freq = root_freq * (harmonic + 1);
     amp = 0.3;
@@ -27,13 +29,15 @@ static void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     //.Process
     sig = osc.Process();
     // Assign Synthesized Waveform to all four outputs.
-    for (size_t chn = 0; chn < 4; chn++) {
-      out[chn][i] = sig;
+    for (size_t chn = 0; chn < 2; chn++)
+    {
+      out[chn + i * 2] = sig;
     }
   }
 }
 
-int main(void) {
+int main(void)
+{
   // Init the seed and so on...
   // initialize seed hardware and daisysp modules
   float sample_rate;
@@ -73,10 +77,11 @@ int main(void) {
   hw.StartAudio(AudioCallback);
 
   // infinite loop
-  while (1) {
+  while (1)
+  {
     // Blocking read of 4 bytes from SPI
     uint8_t buffer[4];
-    spi_handle.BlockingReceive(&buffer, 1);
+    spi_handle.BlockingReceive(buffer, 1, 10000);
     harmonic = buffer[0];
   }
 }
