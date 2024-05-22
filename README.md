@@ -44,3 +44,17 @@ https://electro-smith.github.io/libDaisy/md_doc_2md_2__a8___getting-_started-_s_
 https://github.com/electro-smith/libDaisy/tree/master/examples/SPI
 
 https://forum.electro-smith.com/t/spi-examples/4973
+
+
+### Daisy pinout
+https://github.com/electro-smith/DaisyWiki/wiki/2.-Daisy-Seed-Pinout
+
+# Connecting pins
+
+The two chips need to be connected by GND (otherwise you need optocouplers) and a resistor on the signal pins to avoid driving the other chip through the data pins. This post recommends 3.3kOhm closest to the side receiving input.
+https://forum.arduino.cc/t/will-spi-work-between-two-systems-with-different-power-supplies/168680/6
+
+
+# ESP32 Websocket
+
+https://github.com/dvarrel/AsyncTCP

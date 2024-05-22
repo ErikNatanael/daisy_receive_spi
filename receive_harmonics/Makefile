@@ -1,5 +1,5 @@
 # Project Name
-TARGET = receive_harmonics 
+TARGET = receive_harmonics
 
 # Sources
 CPP_SOURCES = receive_harmonics.cpp
